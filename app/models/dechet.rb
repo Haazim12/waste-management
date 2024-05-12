@@ -1,0 +1,2 @@
+class Dechet < ApplicationRecord
+end

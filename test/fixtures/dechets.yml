@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  radioelement: MyString
+  matricule: MyString
+  date_depot: 2024-05-11
+  date_elimination: 2024-05-11
+
+two:
+  radioelement: MyString
+  matricule: MyString
+  date_depot: 2024-05-11
+  date_elimination: 2024-05-11

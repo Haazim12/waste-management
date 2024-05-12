@@ -1,0 +1,12 @@
+<div class="w-full flex justify-center items-center">
+  <%= simple_form_for @dechet, html:{class: "flex flex-col gap-3 w-1/2 items-center justify-center"}, defaults: { input_html: {class: "shadow appearance-none border rounded w-3/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}, wrapper_html:{class: "flex justify-between gap-10 w-full"} } do |f|%>
+
+    <%= f.input :matricule %>
+    <%= f.input :matricule %>
+    <%= f.input :radioelement%>
+    <%= f.input :origine%>
+    <%= f.input :forme%>
+    <%= f.input :infectueux , label_html:{class: "md:w-2/3 block text-gray-500 font-bold"},input_html:{class: "mr-2 leading-tight"}%>
+    <%= f.button :submit,"Creer dechet" ,class: "shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" %>
+  <% end %>
+</div>
