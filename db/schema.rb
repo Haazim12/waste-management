@@ -15,13 +15,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_11_220633) do
   enable_extension "plpgsql"
 
   create_table "dechets", force: :cascade do |t|
+    t.string "reg_number"
     t.string "radioelement"
-    t.string "matricule"
-    t.string "origine"
-    t.string "forme"
-    t.boolean "infectueux"
-    t.text "observasion"
-    t.date "date_elimination"
+    t.string "waste_type"
+    t.float "activity"
+    t.boolean "eleminated"
+    t.integer "half_life"
+    t.date "elimination_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
