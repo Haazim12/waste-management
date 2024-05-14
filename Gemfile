@@ -70,3 +70,4 @@ gem "tailwindcss-rails", "~> 2.6"
 gem "devise"
  gem "pg"
  gem 'simple_form'
+ gem "font-awesome-sass"

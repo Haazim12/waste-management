@@ -6,7 +6,11 @@ module.exports = {
     "./app/helpers/**/*.rb",
     "./app/javascript/**/*.js",
     "./app/views/**/*",
+<<<<<<< HEAD
     './node_modules/flowbite/**/*.js'
+=======
+    "./node_modules/flowbite/**/*.js",
+>>>>>>> 38e84400299c5cac97b1127626dcde5c9edf2301
   ],
   theme: {
     extend: {
@@ -19,6 +23,10 @@ module.exports = {
     require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),
     require("@tailwindcss/container-queries"),
+<<<<<<< HEAD
     require('flowbite/plugin')
+=======
+    require("flowbite/plugin"),
+>>>>>>> 38e84400299c5cac97b1127626dcde5c9edf2301
   ],
 };
