@@ -5,4 +5,8 @@ class PagesController < ApplicationController
 
   def dashboard
   end
+
+  def calendar
+    @wastes = Dechet.all
+  end
 end
