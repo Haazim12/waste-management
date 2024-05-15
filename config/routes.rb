@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   root to: "pages#home", as: :home
 
   get "/dashboard" => "pages#dashboard", as: :dashboard
+  get "calendar" => "pages#calendar", as: :calendar
 
   resources :dechets
 end

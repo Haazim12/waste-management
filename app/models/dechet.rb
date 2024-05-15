@@ -13,4 +13,8 @@ class Dechet < ApplicationRecord
   def decay_date
     Time.now + decay_time.days
   end
+
+  def start_time
+    elimination_date
+  end
 end

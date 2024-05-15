@@ -71,3 +71,5 @@ gem "devise"
  gem "pg"
  gem 'simple_form'
  gem "font-awesome-sass"
+
+ gem "simple_calendar"
