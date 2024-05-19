@@ -4,7 +4,7 @@
     <p class="text-red"><%= @dechet.errors.full_messages.first if @dechet.errors.any? %></p>
     <%= f.input :reg_number ,label: "Matricule"%>
     <%= f.input :radioelement, label: "Radioélément"%>
-    <%= f.input :waste_type,as: :select, collection: ["Solide", "Fluide"], label: "Type"%>
+    <%= f.input :waste_type,as: :select, collection: ["Solide", "Liquide"], label: "Type"%>
     <%= f.input :activity, label: "Activité"%>
     <%= f.input :half_life, label: "Demi-vie"%>
     <%= f.button :submit,"Ajouter" ,class: "shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" %>
