@@ -9,11 +9,13 @@
 #   end
 
 User.create!(
-  email: "ourrachhatim0@gmail.com",
+  email: "hazimabdellatif124@gmail.com",
   cin: "EE",
-  first_name: "Hatim",
-  last_name: "Ourrach",
+  first_name: "Abdellatif",
+  last_name: "Hazim",
   phone_number: "0666666666",
   password: "password",
   password_confirmation: "password",
 )
+
+puts "#{User.count} users have beeen created"
