@@ -13,9 +13,6 @@ class DechetsController < ApplicationController
 
   def create
     @dechet = Dechet.new(dechet_params)
-
-    decay_time = @dechet.half_life * 10
-    @dechet.elimination_date = Time.now + decay_time.days
     respond_to do |format|
       if @dechet.save
         format.html { redirect_to dechet_path(@dechet), notice: "Dechet was successfully created." }

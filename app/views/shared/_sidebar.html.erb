@@ -7,9 +7,6 @@
 
 <aside id="logo-sidebar" class="top-0 left-0 z-40 w-64  transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-    <a href="/" class="flex items-center ps-2.5 mb-5 justify-center">
-      <img src="https://hpelfarabi.ma/img/logo.png" class="h-6 me-3 sm:h-20 text-center" alt="Flowbite Logo" />
-    </a>
     <ul class="space-y-2 font-medium">
       <li>
         <%= link_to  dechets_path, class: "flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" do %>
@@ -30,12 +27,7 @@
           <span class="flex-1 ms-3 whitespace-nowrap">Calendrier</span>
         </a>
       </li>
-      <li>
-        <%= link_to  destroy_user_session_path, data: {turbo_method: :delete}, class: "flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" do %>
-          <i class="fa-solid fa-right-from-bracket text-2xl text-gray-500"></i>
-          <span class="flex-1 ms-3 whitespace-nowrap">Se deconnecter</span>
-        <%end%>
-      </li>
+
     </ul>
   </div>
 </aside>

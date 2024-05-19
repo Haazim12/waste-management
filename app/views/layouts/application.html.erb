@@ -12,9 +12,11 @@
   </head>
 
   <body class="">
+    <%= render 'shared/navbar' %>
+
     <div class="items-stretch min-h-screen min-w-screen flex h-full bg-slate-200">
       <%=render partial: "shared/notifications", locals: {message: flash[:notice]}%>
-      <%if user_signed_in?%>
+      <%if user_signed_in? && request.path != "/"%>
         <%= render 'shared/sidebar' %>
       <%end%>
       <%= yield %>

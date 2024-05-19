@@ -4,7 +4,6 @@ class Dechet < ApplicationRecord
   validates :waste_type, presence: true
   validates :activity, presence: true, numericality: { greater_than: 0, message: "must be greater than 0" }
   validates :half_life, presence: true, numericality: { greater_than: 0, only_integer: true, message: "must be greater than 0 and integer" }
-  validates :elimination_date, presence: true
 
   def decay_time
     half_life * 10
@@ -15,6 +14,6 @@ class Dechet < ApplicationRecord
   end
 
   def start_time
-    elimination_date
+    decay_date
   end
 end

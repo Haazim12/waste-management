@@ -7,7 +7,6 @@ class CreateDechets < ActiveRecord::Migration[7.1]
       t.float :activity
       t.boolean :eleminated
       t.float :half_life
-      t.date :elimination_date
       t.timestamps
     end
   end
