@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get "/dashboard" => "pages#dashboard", as: :dashboard
   get "calendar" => "pages#calendar", as: :calendar
+  patch "eliminate/:id" => "dechets#eliminate", as: :eliminate
 
   resources :dechets
 end

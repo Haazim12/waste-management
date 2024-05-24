@@ -19,8 +19,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_11_220633) do
     t.string "radioelement"
     t.string "waste_type"
     t.float "activity"
-    t.boolean "eleminated"
+    t.boolean "eliminated"
+    t.datetime "elimination_date"
     t.float "half_life"
+    t.float "volumic_activity"
+    t.float "bdf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

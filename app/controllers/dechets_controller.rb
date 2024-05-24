@@ -43,9 +43,17 @@ class DechetsController < ApplicationController
     redirect_to home_path
   end
 
+  # def eliminate
+  #   @dechet = Dechet.find(params[:id])
+  #   @dechet.
+  #   raise
+  #   if @dechet.save
+  #     redirect_to dechets_path
+  #   end
+  # end
   private
 
   def dechet_params
-    params.require(:dechet).permit(:reg_number, :radioelement, :waste_type, :activity, :eleminated, :half_life, :elimination_date)
+    params.require(:dechet).permit(:reg_number, :radioelement, :waste_type, :activity, :eleminated, :half_life, :volumic_activity, :bdf)
   end
 end
