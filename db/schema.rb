@@ -10,20 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_11_220633) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_27_213640) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dechets", force: :cascade do |t|
-    t.string "reg_number"
+  create_table "tanks", force: :cascade do |t|
     t.string "radioelement"
-    t.string "waste_type"
-    t.float "activity"
-    t.boolean "eliminated"
-    t.datetime "elimination_date"
-    t.float "half_life"
-    t.float "volumic_activity"
-    t.float "bdf"
+    t.float "full_capacity"
+    t.float "current_capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,4 +38,25 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_11_220633) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wastes", force: :cascade do |t|
+    t.string "reg_number"
+    t.string "waste_type"
+    t.string "radioelement"
+    t.string "solid_type"
+    t.float "activity"
+    t.float "weight"
+    t.float "volume"
+    t.boolean "infectious", default: false
+    t.boolean "eliminated", default: false
+    t.datetime "elimination_date"
+    t.float "half_life"
+    t.float "volumic_activity"
+    t.float "risidual_activity"
+    t.bigint "tank_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tank_id"], name: "index_wastes_on_tank_id"
+  end
+
+  add_foreign_key "wastes", "tanks"
 end
