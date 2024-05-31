@@ -17,5 +17,53 @@ User.create!(
   password: "password",
   password_confirmation: "password",
 )
+# Tank.create!(
+#   radioelement: "iode-131",
+#   full_capacity: 1300.0,
+#   current_capacity: 1300.0,
+# )
+# Tank.create!(
+#   radioelement: "TC-99m",
+#   full_capacity: 700.0,
+#   current_capacity: 700.0,
+# )
+# Tank.create!(
+#   radioelement: "FDG-",
+#   full_capacity: 300.0,
+#   current_capacity: 300.0,
+# )
+Waste.create!(
+  reg_number: "A1",
+  waste_type: "Solide",
+  radioelement: "iode-131",
+  activity: 4.0,
+  half_life: 0.5,
+  infectious: true,
+)
+Waste.create!(
+  reg_number: "A2",
+  waste_type: "Liquide",
+  radioelement: "iode-131",
+  activity: 2.0,
+  half_life: 0.0001,
+)
+Waste.create!(
+  reg_number: "A3",
+  waste_type: "solide",
+  radioelement: "iode-131",
+  activity: 1.0,
+  half_life: 0.2,
+  infectious: false,
 
-puts "#{User.count} users have beeen created"
+)
+Waste.create!(
+  reg_number: "A4",
+  waste_type: "Liquide",
+  radioelement: "iode-131",
+  activity: 1.0,
+  half_life: 1.0,
+
+)
+
+puts "#{User.count} users created"
+puts "#{Waste.count} Wastes created"

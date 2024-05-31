@@ -15,7 +15,7 @@
     <%= render 'shared/navbar' %>
 
     <div class="items-stretch min-h-screen min-w-screen flex h-full bg-slate-200">
-      <%=render partial: "shared/notifications", locals: {message: flash[:notice]}%>
+      <%=render partial: "shared/notifications", locals: {notice_message: flash[:notice], alert_message: flash[:alert]}%>
       <%if user_signed_in? && request.path != "/"%>
         <%= render 'shared/sidebar' %>
       <%end%>
