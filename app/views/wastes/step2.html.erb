@@ -1,0 +1,26 @@
+<div class="w-full flex justify-center gap-10 font-bold items-center flex-col px-40 py-20">
+  <h1 class="text-5xl">step2</h1>
+  <%= simple_form_for @waste, method: :patch, url: update_step2_path, html:{class: "flex flex-col gap-3 items-center justify-center rounded-md bg-slate-100 p-20 w-full border border-gray-400"}, defaults: { input_html: {class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"}, wrapper_html:{class: "flex flex-col  mb-5 w-full"},label_html: {class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white"} } do |f|%>
+    <%if @waste.errors.any?%>
+      <div id="toast-danger" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+        <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z"/>
+          </svg>
+          <span class="sr-only">Error icon</span>
+        </div>
+        <div class="ms-3 text-sm font-normal"><%= @waste.errors.full_messages.first%></div>
+      </div>
+    <%end%>
+
+    <% if @waste.waste_type === "Solide" %>
+      <%= f.input :solid_type, label: "Type de solide"%>
+      <%= f.input :weight, label: "Poid"%>
+      <%= f.input :infectious, label: "infectieux", input_html: {class: "w-4 h-4  text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 me-2", label_html:{class: "ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 me-2"}, wrapper_html:{class:"flex items-center me-4 gap-2"}}%>
+
+    <%else%>
+      <%= f.input :volume, label: "Volume"%>
+    <% end %>
+    <%= f.button :submit,"Ajouter" ,class: "shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" %>
+  <% end %>
+</div>

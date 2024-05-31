@@ -73,3 +73,4 @@ gem "devise"
  gem "font-awesome-sass"
 
  gem "simple_calendar"
+gem "pg_search"

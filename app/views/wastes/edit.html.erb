@@ -1,0 +1,12 @@
+<div class="w-full flex justify-center gap-10 font-bold items-center flex-col px-40 py-20">
+  <h1 class="text-5xl">Modifier déchet: <%= @waste.reg_number %></h1>
+  <%= simple_form_for @waste, html:{class: "flex flex-col gap-3 items-center justify-center rounded-md bg-slate-100 p-20 w-full border border-gray-400"}, defaults: { input_html: {class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"}, wrapper_html:{class: "flex flex-col  mb-5 w-full"},label_html: {class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white"} } do |f|%>
+    <p class="text-red"><%= @waste.errors.full_messages.first if @waste.errors.any? %></p>
+    <%= f.input :reg_number ,label: "Matricule"%>
+    <%= f.input :radioelement, label: "Radioélément"%>
+    <%= f.input :waste_type,as: :select, collection: ["Solide", "Liquide"], label: "Type"%>
+    <%= f.input :activity, label: "Activité"%>
+    <%= f.input :half_life, label: "Demi-vie"%>
+    <%= f.button :submit,"Modifier" ,class: "shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" %>
+  <% end %>
+</div>
