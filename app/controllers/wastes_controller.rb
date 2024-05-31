@@ -97,8 +97,8 @@ class WastesController < ApplicationController
   end
 
   def eliminate
-    raise
     @waste = Waste.find(params[:id])
+
     @waste.eliminated = true
     @waste.elimination_date = Time.now
     if @waste.save

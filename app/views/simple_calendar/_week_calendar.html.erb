@@ -1,21 +1,31 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
     <span class="calendar-title">
-      <%= t('simple_calendar.week', default: 'Week') %>
+      <%= t('simple_calendar.week', default: 'Semaine') %>
       <%= calendar.week_number %>
       <% if calendar.number_of_weeks > 1 %>
         - <%= calendar.end_week %>
       <% end %>
     </span>
 
-    <nav>
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+    <nav class="w-full mb-3">
+      <div class="flex items-center justify-center w-full gap-2">
+
+        <%= link_to calendar.url_for_previous_view do%>
+          <button class= "py-2.5 px-6 rounded-lg text-sm font-medium bg-teal-100 text-teal-800">Précédente</button>
+        <% end %>
+        <%= link_to calendar.url_for_today_view do%>
+          <button class= "py-2.5 px-6 rounded-lg text-sm font-medium bg-teal-200 text-teal-800">Aujourd'hui</button>
+        <% end %>
+        <%= link_to calendar.url_for_next_view do%>
+          <button class= "py-2.5 px-6 rounded-lg text-sm font-medium bg-teal-300 text-teal-800">Prochaine</button>
+        <% end %>
+
+      </div>
     </nav>
   </div>
 
-  <table class="table table-striped">
+  <table class="table table-striped rounded-md">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
@@ -28,7 +38,7 @@
       <% date_range.each_slice(7) do |week| %>
         <tr>
           <% week.each do |day| %>
-            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+            <%= content_tag :td, class: "p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-300 overflow-auto" do %>
               <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
             <% end %>
           <% end %>
