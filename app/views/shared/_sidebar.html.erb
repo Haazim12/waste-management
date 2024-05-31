@@ -9,6 +9,12 @@
   <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800 w-">
     <ul class="space-y-2 font-medium">
       <li>
+        <%= link_to  home_path, class: "flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-purple-100 dark:hover:bg-purple-100 group active:bg-purple-100 #{'bg-purple-200' if current_page?(wastes_path)} " do %>
+          <i class="fa-solid fa-home text-2xl text-purple-500"></i>
+          <span class="ms-3">Accueil</span>
+        <%end%>
+      </li>
+      <li>
         <%= link_to  wastes_path, class: "flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-purple-100 dark:hover:bg-purple-100 group active:bg-purple-100 #{'bg-purple-200' if current_page?(wastes_path)} " do %>
           <i class="fa-solid fa-list text-2xl text-purple-500"></i>
           <span class="ms-3">Dechets</span>

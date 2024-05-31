@@ -58,11 +58,35 @@ class WastesController < ApplicationController
 
   def update
     @waste = Waste.find(params[:id])
-    if @waste.update(waste_params)
+    if @waste.update!(waste_params)
+      raise
       redirect_to waste_path(@waste)
       flash[:notice] = "waste was successfully updated."
     else
-      render :edit
+      raise
+      redirect_to waste_path(@waste)
+      flash[:error] = "Error: waste was not updated."
+    end
+  end
+
+  def control
+    @waste = Waste.find(params[:id])
+    if @waste.waste_type == "Solide"
+      if @waste.update(solid_control_params)
+        redirect_to waste_path(@waste)
+        flash[:notice] = "Sauvegarde effectuée avec succès."
+      else
+        redirect_to waste_path(@waste)
+        flash[:alert] = @waste.errors.full_messages.first
+      end
+    elsif @waste.waste_type == "Liquide"
+      if @waste.update(liquid_control_params)
+        redirect_to waste_path(@waste)
+        flash[:notice] = "Sauvegarde effectuée avec succès."
+      else
+        redirect_to waste_path(@waste)
+        flash[:alert] = @waste.errors.full_messages.first
+      end
     end
   end
 
@@ -89,11 +113,15 @@ class WastesController < ApplicationController
   private
 
   def waste_params
-    params.require(:waste).permit(:reg_number, :waste_type, :activity, :half_life, :radioelement, :tank_id, :volumic_activity, :risidual_activity, :solid_type, :weight, :infectious, :volume)
+    params.require(:waste).permit(:reg_number, :waste_type, :activity, :half_life, :radioelement, :tank_id, :volumic_activity, :risidual_activity, :solid_type, :weight, :infectious, :volume, :bdf)
   end
 
-  def eliminate_params
-    params.require(:waste).permit(:volumic_activity, :risidual_activity)
+  def liquid_control_params
+    params.require(:waste).permit(:volumic_activity)
+  end
+
+  def solid_control_params
+    params.require(:waste).permit(:risidual_activity, :bdf)
   end
 
   def current_waste

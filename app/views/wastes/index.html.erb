@@ -74,12 +74,10 @@
                 </td>
                 <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <div class="flex items-center mr-3">
-                    <%if waste.state == "green"%>
-                      <div class="h-4 w-4 rounded-full inline-block mr-2 bg-green-700"></div>
-                    <%elsif waste.state == "yellow"%>
-                      <div class="h-4 w-4 rounded-full inline-block mr-2 bg-yellow-700"></div>
-                    <%else%>
+                    <%if waste.state == "active"%>
                       <div class="h-4 w-4 rounded-full inline-block mr-2 bg-red-700"></div>
+                    <%else%>
+                      <div class="h-4 w-4 rounded-full inline-block mr-2 bg-green-700"></div>
                     <%end%>
                     <%= waste.reg_number%>
                   </div>
@@ -118,6 +116,7 @@
               <%= render 'partials/delete_modal' ,waste: waste%>
               <!-- update component -->
               <%= render "partials/update_waste_modal", waste: waste%>
+              <%= render "partials/control_waste_modal", waste: waste%>
             <%end%>
 
           </tbody>

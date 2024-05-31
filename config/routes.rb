@@ -14,11 +14,10 @@ Rails.application.routes.draw do
   get "/dashboard" => "pages#dashboard", as: :dashboard
   get "calendar" => "pages#calendar", as: :calendar
   get "eliminate/:id" => "wastes#eliminate", as: :eliminate
+  patch "wastes/:id/control" => "wastes#control", as: :control
   get "archive" => "pages#archive", as: :archive
   get "new_waste" => "wastes#new", as: :new_waste
   post "create_waste" => "wastes#create", as: :create_waste
-  get "create_waste2" => "wastes#step2", as: :step2
-  patch "create_waste2" => "wastes#update_step2", as: :update_step2
 
   resources :dechets
   resources :wastes

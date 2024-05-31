@@ -14,7 +14,9 @@ class CreateWastes < ActiveRecord::Migration[7.1]
       t.float :half_life
       t.float :volumic_activity
       t.float :risidual_activity
-      t.references :tank, null: true, foreign_key: true
+      t.float :bdf
+      t.text :description
+      # t.references :tank, null: true, foreign_key: true
       t.timestamps
     end
   end

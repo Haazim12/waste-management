@@ -52,11 +52,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_213640) do
     t.float "half_life"
     t.float "volumic_activity"
     t.float "risidual_activity"
-    t.bigint "tank_id"
+    t.float "bdf"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tank_id"], name: "index_wastes_on_tank_id"
   end
 
-  add_foreign_key "wastes", "tanks"
 end

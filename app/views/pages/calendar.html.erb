@@ -1,17 +1,23 @@
-<%= month_calendar(events: @wastes ) do |date,wastes| %>
-  <div class="flex flex-col h-40 mx-auto xl:w-40 lg:w-30 md:w-30 sm:w-full w-10 mx-auto overflow-hidden">
-    <div class="top h-5 w-full">
-      <span class="text-gray-500">
-        <%= date.strftime('%m/%d') %>
-      </span>
-    </div>
+<div class="flex flex-col w-full items-center justify-center p-5">
+  <h1 class="text-4xl font-bold">
+    Calendrier des dates d'elimination
+  </h1>
 
-    <% wastes.each do |waste| %>
-      <div class="bottom flex-grow py-1 w-full cursor-pointer">
-        <div class="event bg-blue-400 text-white rounded p-1 text-sm mb-1">
-          <%= link_to "#{waste.reg_number}", waste %>
-        </div>
+  <%= month_calendar(events: @wastes ) do |date,wastes| %>
+    <div class="flex flex-col h-40 mx-auto xl:w-40 lg:w-30 md:w-30 sm:w-full w-10 mx-auto overflow-hidden">
+      <div class="top h-5 w-full">
+        <span class="text-gray-500">
+          <%= date.strftime('%m/%d') %>
+        </span>
       </div>
-    <% end %>
-  </div>
-<%end%>
+
+      <% wastes.each do |waste| %>
+
+        <%= link_to  waste, class: "text-white event bg-purple-400 text-white rounded p-1 text-sm my-1 w-full"  do %>
+          <%= waste.reg_number %>
+        <% end %>
+
+      <% end %>
+    </div>
+  <%end%>
+</div>
