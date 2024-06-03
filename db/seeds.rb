@@ -37,7 +37,7 @@ Waste.create!(
   waste_type: "Solide",
   radioelement: "iode-131",
   activity: 4.0,
-  half_life: 0.5,
+  half_life: 0.00001,
   infectious: true,
 )
 Waste.create!(
@@ -49,7 +49,7 @@ Waste.create!(
 )
 Waste.create!(
   reg_number: "A3",
-  waste_type: "solide",
+  waste_type: "Solide",
   radioelement: "iode-131",
   activity: 1.0,
   half_life: 0.2,

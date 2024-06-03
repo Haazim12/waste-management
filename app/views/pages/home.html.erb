@@ -1,8 +1,8 @@
 <div class="flex flex-col p-9 w-full">
 
-  <div id="gallery" class="relative w-full h-1/2 mb-9" data-carousel="slide">
+  <div id="gallery" class="relative w-full h-[500px] mb-9" data-carousel="slide">
     <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-full md:w-full ">
+    <div class="relative h-full overflow-hidden rounded-lg md:h-full md:w-full ">
       <!-- Item 1 -->
       <div class="hidden duration-700 ease-in-out " data-carousel-item>
         <%= image_tag 'radiology/11.jpg', class: "absolute block w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" %>
@@ -44,7 +44,7 @@
       </span>
     </button>
   </div>
-  <div class="flex items-center justify-center gap-4 h-1/2 p-20 ">
+  <div class="flex items-center justify-center gap-4 h-1/2 ">
     <%= link_to  wastes_path do%>
       <div
       class="flex flex-col justify-center items-center bg-yellow-100 px-4 h-[126px] w-[100%] md:w-[281px] md:h-[192px] rounded-lg justify-self-center transition-all hover:scale-105">
@@ -52,7 +52,7 @@
           <i class="fa-solid fa-radiation text-5xl text-yellow-900"></i>
           <p class="font-bold text-3xl sm:text-4xl lg:text-5xl leading-9 text-primary ml-2"><%=Waste.all.count%></p>
         </div>
-        <p class="font-medium text-base sm:text-lg leading-6 mt-3 md:mt-6 text-center">Total des déchets</p>
+        <p class="font-medium text-base sm:text-lg leading-6 mt-3 md:mt-6 text-center">Liste des déchets</p>
       </div>
     <% end %>
     <%= link_to  archive_path do%>
@@ -74,5 +74,26 @@
       <p class="font-medium text-base sm:text-lg leading-6 mt-3 md:mt-6 text-center">Déchets à controler </p>
     </div>
 
+  </div>
+  <div>
+    <div class="flex flex-col w-full items-center justify-center p-5">
+      <%= week_calendar(events: @wastes, date: Date.today ) do |date,wastes| %>
+        <div class="flex flex-col h-40 mx-auto xl:w-40 lg:w-30 md:w-30 sm:w-full w-10 mx-auto overflow-hidden">
+          <div class="top h-5 w-full">
+            <span class="text-gray-500">
+              <%= date.strftime('%m/%d') %>
+            </span>
+          </div>
+
+          <% wastes.each do |waste| %>
+
+            <%= link_to  waste, class: "text-white event bg-purple-400 text-white rounded p-1 text-sm my-1 w-full"  do %>
+              <%= waste.reg_number %>
+            <% end %>
+
+          <% end %>
+        </div>
+      <%end%>
+    </div>
   </div>
 </div>

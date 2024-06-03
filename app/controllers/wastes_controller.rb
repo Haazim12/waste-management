@@ -59,11 +59,9 @@ class WastesController < ApplicationController
   def update
     @waste = Waste.find(params[:id])
     if @waste.update!(waste_params)
-      raise
       redirect_to waste_path(@waste)
       flash[:notice] = "waste was successfully updated."
     else
-      raise
       redirect_to waste_path(@waste)
       flash[:error] = "Error: waste was not updated."
     end
@@ -97,8 +95,8 @@ class WastesController < ApplicationController
   end
 
   def eliminate
-    raise
     @waste = Waste.find(params[:id])
+
     @waste.eliminated = true
     @waste.elimination_date = Time.now
     if @waste.save
