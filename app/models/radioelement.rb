@@ -1,0 +1,2 @@
+class Radioelement < ApplicationRecord
+end

@@ -27,6 +27,12 @@
         </a>
       </li>
       <li>
+        <a href="/tanks" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-purple-100 dark:hover:bg-purple-100 group <%="bg-purple-200" if current_page?(tanks_path) %>" >
+          <i class="fas fa-database text-xl text-purple-500"></i>
+          <span class="flex-1 ms-3 whitespace-nowrap">Cuves</span>
+        </a>
+      </li>
+      <li>
         <a href="/archive" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-purple-100 dark:hover:bg-purple-100 group <%= "bg-purple-100" if current_page?(archive_path) %>">
           <i class="fa-solid fa-box-archive text-2xl text-purple-500"></i>
           <span class="flex-1 ms-3 whitespace-nowrap">Archive</span>

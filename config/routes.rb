@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "archive" => "pages#archive", as: :archive
   get "new_waste" => "wastes#new", as: :new_waste
   post "create_waste" => "wastes#create", as: :create_waste
+  get "tanks" => "pages#tanks", as: :tanks
 
   resources :dechets
   resources :wastes

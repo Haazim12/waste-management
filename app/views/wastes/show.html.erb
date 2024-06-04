@@ -46,7 +46,7 @@
     </div>
     <div class="rounded  bg-white -gray-400 p-6 rounded-xl">
       <h1 class="text-xl text-gray-700 mb-4">Radioélément</h1>
-      <p class="text-3xl"><%=@waste.radioelement%></p>
+      <p class="text-3xl"><%=@waste.radioelement.name%></p>
     </div>
     <div class="  bg-slate-50 -gray-400 p-6 rounded-xl bg-white">
       <h1 class="text-xl text-gray-700 mb-4">Date de dépôt</h1>
@@ -70,8 +70,8 @@
   <div class="flex gap-6">
     <%if @waste.waste_type === "Liquide"%>
       <div class="rounded  bg-slate-50 -gray-400 p-6 rounded-xl bg-white">
-        <h1 class="text-xl text-gray-700 mb-4">Volume</h1>
-        <p class="text-3xl"><%=@waste.volume.present? ? @waste.volume : "--"%></p>
+        <h1 class="text-xl text-gray-700 mb-4">Volume éstimé</h1>
+        <p class="text-3xl"><%=@waste.total_volume.present? ? @waste.total_volume : "--"%></p>
       </div>
       <div class="rounded  bg-slate-50 -gray-400 p-6 rounded-xl bg-white">
         <h1 class="text-xl text-gray-700 mb-4">Activité volumique</h1>

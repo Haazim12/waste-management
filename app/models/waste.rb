@@ -5,9 +5,16 @@ class Waste < ApplicationRecord
   validates :waste_type, presence: true, on: :create
   validates :radioelement, presence: true, on: :create
   validates :activity, presence: true, numericality: { greater_than: 0, message: "doit être supérieur à 0" }, on: :create
-  validates :half_life, presence: true, numericality: { greater_than: 0, message: "doit être supérieur à 0 et entier" }, on: :create
   validate :risidual_activity_less_than_two_times_bdf, on: :update
   validate :volumic_activity_less_than_7, on: :update
+
+  belongs_to :examination, optional: true
+  belongs_to :tank, optional: true
+  belongs_to :radioelement, optional: true
+
+  def half_life
+    radioelement.half_life
+  end
 
   def decay_time
     half_life * 10

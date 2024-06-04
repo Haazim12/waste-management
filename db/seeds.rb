@@ -17,53 +17,94 @@ User.create!(
   password: "password",
   password_confirmation: "password",
 )
-# Tank.create!(
+Radioelement.create!(
+  name: "iode-131",
+  half_life: 8.02,
+)
+Radioelement.create!(
+  name: "tc-99m",
+  half_life: 0.254167,
+)
+
+Radioelement.create!(
+  name: "fdg-18",
+  half_life: 0.076180556,
+)
+
+Tank.create!(
+  radioelement_id: 1,
+  full_capacity: 1300.0,
+  current_capacity: 1300.0,
+)
+Tank.create!(
+  radioelement_id: 2,
+  full_capacity: 700.0,
+  current_capacity: 700.0,
+)
+Tank.create!(
+  radioelement_id: 3,
+  full_capacity: 300.0,
+  current_capacity: 300.0,
+)
+Examination.create!(
+  exam_type: "pet-scan",
+  volume: 1.5,
+)
+Examination.create!(
+  exam_type: "irratherapie",
+  volume: 40.0,
+)
+Examination.create!(
+  exam_type: "scintigraphie",
+  volume: 1.5,
+)
+# Waste.create!(
+#   reg_number: "A1",
+#   waste_type: "Solide",
 #   radioelement: "iode-131",
-#   full_capacity: 1300.0,
-#   current_capacity: 1300.0,
+#   activity: 4.0,
+#   half_life: 0.00001,
+#   infectious: true,
 # )
-# Tank.create!(
+# Waste.create!(
+#   reg_number: "A3",
+#   waste_type: "Solide",
+#   radioelement: "exemple",
+#   activity: 1.0,
+#   half_life: 0.2,
+#   infectious: false,
+
+# )
+# Waste.create!(
+#   reg_number: "A2",
+#   waste_type: "Liquide",
+#   radioelement: "iode-131",
+#   activity: 2.0,
+#   half_life: 0.0001,
+#   examination_id: 1,
+#   tank_id: 1,
+# )
+# Waste.create!(
+#   reg_number: "A4",
+#   waste_type: "Liquide",
 #   radioelement: "TC-99m",
-#   full_capacity: 700.0,
-#   current_capacity: 700.0,
+#   activity: 1.0,
+#   half_life: 1.0,
+#   examination_id: 2,
+#   tank_id: 2,
 # )
-# Tank.create!(
-#   radioelement: "FDG-",
-#   full_capacity: 300.0,
-#   current_capacity: 300.0,
+# Waste.create!(
+#   reg_number: "A5",
+#   waste_type: "Liquide",
+#   radioelement: "FDG",
+#   activity: 1.0,
+#   half_life: 1.0,
+#   examination_id: 3,
+#   tank_id: 3,
 # )
-Waste.create!(
-  reg_number: "A1",
-  waste_type: "Solide",
-  radioelement: "iode-131",
-  activity: 4.0,
-  half_life: 0.00001,
-  infectious: true,
-)
-Waste.create!(
-  reg_number: "A2",
-  waste_type: "Liquide",
-  radioelement: "iode-131",
-  activity: 2.0,
-  half_life: 0.0001,
-)
-Waste.create!(
-  reg_number: "A3",
-  waste_type: "Solide",
-  radioelement: "iode-131",
-  activity: 1.0,
-  half_life: 0.2,
-  infectious: false,
 
-)
-Waste.create!(
-  reg_number: "A4",
-  waste_type: "Liquide",
-  radioelement: "iode-131",
-  activity: 1.0,
-  half_life: 1.0,
-
-)
-
+puts "#{Tank.count} tanks created"
+puts "#{Radioelement.count} radioelements created"
+puts "#{Examination.count} examinations created"
 puts "#{User.count} users created"
 puts "#{Waste.count} Wastes created"
