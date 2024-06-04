@@ -57,7 +57,7 @@
               <th scope="col" class="p-4">Demi-vie</th>
               <th scope="col" class="p-4">Activite</th>
               <th scope="col" class="p-4">Poids</th>
-              <th scope="col" class="p-4">Volume</th>
+              <th scope="col" class="p-4">Volume éstimé</th>
               <th scope="col" class="p-4">Date de depot</th>
               <th scope="col" class="p-4">Date d'elimination</th>
               <th scope="col" class="p-4">Actions</th>
@@ -87,7 +87,7 @@
                 </td>
                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <div class="flex items-center">
-                    <%= waste.radioelement.present? ? waste.radioelement : "--"%>
+                    <%= waste.radioelement.present? ? waste.radioelement.name : "--"%>
                   </div>
                 </td>
                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"><%=waste.half_life.present? ? waste.half_life : "--"%></td>
@@ -96,7 +96,7 @@
                   <%= waste.weight.present? ? waste.weight : "--" %>
                 </td>
                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  <%= waste.volume.present? ? waste.volume : "--" %>
+                  <%= waste.total_volume.present? ? waste.total_volume : "--" %>
                 </td>
 
                 <td class="px-4 py-3"><%= waste.created_at.strftime("%F") %></td>

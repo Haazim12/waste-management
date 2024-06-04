@@ -1,5 +1,7 @@
 class WastesController < ApplicationController
   def index
+    @exams = Examination.all.map { |exam| [exam.exam_type, exam.id] }
+    @radioelements = Radioelement.all.map { |radioelement| [radioelement.name, radioelement.id] }
     if params[:search].present?
       @wastes = Waste.where(eliminated: false).search_by_reg_number(params[:search][:query])
     else
@@ -18,7 +20,15 @@ class WastesController < ApplicationController
 
   def create
     @waste = Waste.new(waste_params)
+    exam = Examination.find(params[:waste][:examination_id])
+    radioelement = Radioelement.find(params[:waste][:radioelement_id])
+    tank = Tank.where(radioelement_id: radioelement.id).first
+    @waste.total_volume = exam.volume * params[:waste][:patients_count].to_i
+    @waste.tank_id = tank.id
+    @waste.examination_id = exam.id
+    tank.current_capacity -= @waste.total_volume
     if @waste.save
+      tank.save
       redirect_to waste_path(@waste)
       flash[:notice] = "waste was successfully created."
     else
@@ -111,7 +121,7 @@ class WastesController < ApplicationController
   private
 
   def waste_params
-    params.require(:waste).permit(:reg_number, :waste_type, :activity, :half_life, :radioelement, :tank_id, :volumic_activity, :risidual_activity, :solid_type, :weight, :infectious, :volume, :bdf)
+    params.require(:waste).permit(:reg_number, :waste_type, :activity, :patients_count, :radioelement_id, :tank_id, :volumic_activity, :risidual_activity, :solid_type, :weight, :infectious, :volume, :bdf, :description)
   end
 
   def liquid_control_params

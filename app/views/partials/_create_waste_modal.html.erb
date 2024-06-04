@@ -20,15 +20,14 @@
             <%= f.input :reg_number, label: :Matricule%>
           </div>
           <div>
-            <%= f.input :radioelement, label: :Radioélément%>
+            <%= f.input :radioelement_id, as: :select, collection: @radioelements, label: :Radioélément%>
           </div>
           <div>
             <%= f.input :activity, label: :Activité%>
           </div>
-          <div>
-            <%= f.input :half_life, label: "Demi-vie"%>
-          </div>
+
         </div>
+        <hr class="my-7">
         <div class="flex w-full justify-between items-center gap-2 mb-4">
           <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 w-1/2">
             <%= f.radio_button :waste_type, "Solide", id: "waste_type_solid",class:"w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600", data: { action: "change->create-waste#toggle" } %>
@@ -39,30 +38,35 @@
             <%= f.label :waste_type, "Liquide", for: "waste_type_liquid" ,class: "w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"%>
           </div>
         </div>
-        <div class="grid gap-4 mb-4 sm:grid-cols-2 hidden mb-4" data-create-waste-target="solidFields">
-          <div class="mb-4">
-            <%= f.input :weight, label: :poids%>
+        <hr class="my-7">
+        <div class=" hidden mb-4" data-create-waste-target="solidFields">
+          <div class="grid gap-4 mb-4 sm:grid-cols-2">
+            <div class="mb-4">
+              <%= f.input :weight, label: :poids%>
+            </div>
+            <div class="flex items-center w-full">
+              <%= f.input :infectious,label: "Infectieux" ,wrapper_html: {class: "flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 w-full"}, label_html: {class: "py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"}, input_html:{class: "me-2 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"}%>
+            </div>
           </div>
-          <div>
-            <%= f.input :infectious,label: "Infectieux" ,wrapper_html: {class: "flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 w-1/2"}, label_html: {class: "py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"}, input_html:{class: "me-2 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"}%>
-          </label>
+          <div class="mb-4">
+            <%= f.input :description %>
+          </div>
         </div>
-      </div>
 
-      <div class="grid gap-4 mb-4 sm:grid-cols-2 hidden" data-create-waste-target="liquidFields">
-        <div >
-          <%= f.input :volume%>
+        <div class="hidden" data-create-waste-target="liquidFields">
+          <div class="grid gap-4 mb-4 sm:grid-cols-2 ">
+            <div>
+              <%= f.input :examination_id, as: :select, collection: @exams, label: "Type d'examen" %>
+            </div>
+            <div>
+              <%= f.input :patients_count, label: "Nombre de patients" %>
+            </div>
+          </div>
         </div>
-      </div>
+        <%= f.submit "Ajouter dechet",class: "text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"%>
 
-      <div class="mb-4">
-        <%= f.input :description %>
-      </div>
+      <% end %>
 
-      <%= f.submit "Ajouter dechet",class: "text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"%>
-
-    <% end %>
-
+    </div>
   </div>
-</div>
 </div>

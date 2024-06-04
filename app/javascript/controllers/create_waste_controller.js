@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ["solidFields", "liquidFields"];
   connect() {
     console.log("Hello from create-waste controller");
+    this.toggle();
   }
 
   toggle() {

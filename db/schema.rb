@@ -14,12 +14,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_213640) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "examinations", force: :cascade do |t|
+    t.string "exam_type"
+    t.float "volume"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "radioelements", force: :cascade do |t|
+    t.string "name"
+    t.float "half_life"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tanks", force: :cascade do |t|
-    t.string "radioelement"
+    t.bigint "radioelement_id", null: false
     t.float "full_capacity"
     t.float "current_capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["radioelement_id"], name: "index_tanks_on_radioelement_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,21 +56,29 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_213640) do
   create_table "wastes", force: :cascade do |t|
     t.string "reg_number"
     t.string "waste_type"
-    t.string "radioelement"
-    t.string "solid_type"
     t.float "activity"
     t.float "weight"
-    t.float "volume"
+    t.float "total_volume"
     t.boolean "infectious", default: false
+    t.integer "patients_count"
+    t.bigint "examination_id"
+    t.bigint "tank_id"
+    t.bigint "radioelement_id"
     t.boolean "eliminated", default: false
     t.datetime "elimination_date"
-    t.float "half_life"
     t.float "volumic_activity"
     t.float "risidual_activity"
     t.float "bdf"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["examination_id"], name: "index_wastes_on_examination_id"
+    t.index ["radioelement_id"], name: "index_wastes_on_radioelement_id"
+    t.index ["tank_id"], name: "index_wastes_on_tank_id"
   end
 
+  add_foreign_key "tanks", "radioelements"
+  add_foreign_key "wastes", "examinations"
+  add_foreign_key "wastes", "radioelements"
+  add_foreign_key "wastes", "tanks"
 end
