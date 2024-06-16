@@ -20,18 +20,23 @@ class WastesController < ApplicationController
 
   def create
     @waste = Waste.new(waste_params)
-    exam = Examination.find(params[:waste][:examination_id])
     radioelement = Radioelement.find(params[:waste][:radioelement_id])
-    tank = Tank.where(radioelement_id: radioelement.id).first
-    @waste.total_volume = exam.volume * params[:waste][:patients_count].to_i
-    @waste.tank_id = tank.id
-    @waste.examination_id = exam.id
-    tank.current_capacity -= @waste.total_volume
+    if params[:waste][:waste_type] == "Liquide"
+      exam = Examination.find(params[:waste][:examination_id])
+      tank = Tank.where(radioelement_id: radioelement.id).first
+      @waste.total_volume = exam.volume * params[:waste][:patients_count].to_i
+      @waste.tank_id = tank.id
+      @waste.examination_id = exam.id
+      tank.current_capacity -= @waste.total_volume
+    end
     if @waste.save
-      tank.save
+      if @waste.waste_type == "Liquide"
+        tank.save
+      end 
       redirect_to waste_path(@waste)
       flash[:notice] = "waste was successfully created."
     else
+      flash[:alert] = "waste was not successfully created.#{@waste.errors.full_message.first}"
       redirect_to dechets_path
     end
   end
@@ -106,7 +111,6 @@ class WastesController < ApplicationController
 
   def eliminate
     @waste = Waste.find(params[:id])
-
     @waste.eliminated = true
     @waste.elimination_date = Time.now
     if @waste.save
