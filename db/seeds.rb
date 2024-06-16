@@ -19,7 +19,7 @@ User.create!(
 )
 Radioelement.create!(
   name: "iode-131",
-  half_life: 8.02,
+  half_life: 0.0000802,
 )
 Radioelement.create!(
   name: "tc-99m",
